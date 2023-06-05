@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   root "home#index"
 
-  constraints(CookieConstraint.new) do
+  authenticate :user do
     mount Sidekiq::Web => "/sidekiq"
   end
 end
